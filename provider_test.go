@@ -56,6 +56,18 @@ func TestV3HTTPProvider(t *testing.T) {
 			BrokerURL:       os.Getenv("PACT_URL"),
 			ConsumerVersionSelectors: []provider.Selector{
 				&provider.ConsumerVersionSelector{
+					MainBranch: true,
+				},
+				&provider.ConsumerVersionSelector{
+					DeployedOrReleased: true,
+				},
+				&provider.ConsumerVersionSelector{
+					Branch: os.Getenv("APP_BRANCH"),
+				},
+				&provider.ConsumerVersionSelector{
+					MatchingBranch: true,
+				},
+				&provider.ConsumerVersionSelector{
 					Tag: "master",
 				},
 				&provider.ConsumerVersionSelector{
