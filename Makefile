@@ -102,5 +102,8 @@ test_contract_requiring_verification_published_webhook:
 ## Misc
 ## ======================
 
+install:
+	pact-go -l DEBUG install
+
 .env:
 	touch .env
