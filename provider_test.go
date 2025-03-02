@@ -158,7 +158,6 @@ func startServer() {
 		fmt.Fprintf(w, `
 			{
 				"accountBalance": 123.76,
-				"nationality": "US",
 				"datetime": "2020-01-01",
 				"equality": "a thing",
 				"id": 12,
@@ -192,9 +191,8 @@ func startServer() {
 }
 
 type User struct {
-	ID          int    `json:"id" pact:"example=27"`
-	Name        string `json:"name" pact:"example=billy"`
-	Nationality string `json:"nationality" pact:"example=US"`
-	LastName    string `json:"lastName" pact:"example=Sampson"`
-	Date        string `json:"datetime" pact:"example=2020-01-01'T'08:00:45,format=yyyy-MM-dd'T'HH:mm:ss,generator=datetime"`
+	ID       int    `json:"id" pact:"example=27"`
+	Name     string `json:"name" pact:"example=billy"`
+	LastName string `json:"lastName" pact:"example=Sampson"`
+	Date     string `json:"datetime" pact:"example=2020-01-01'T'08:00:45,format=yyyy-MM-dd'T'HH:mm:ss,generator=datetime"`
 }
