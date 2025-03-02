@@ -53,8 +53,8 @@ func TestV3HTTPProvider(t *testing.T) {
 		err := verifier.VerifyProvider(t, provider.VerifyRequest{
 			ProviderBaseURL:      "http://127.0.0.1:8111",
 			Provider:             "pact-demo-be",
-			ProviderVersion:      os.Getenv("APP_SHA"),
-			ProviderBranch:       os.Getenv("APP_BRANCH"),
+			ProviderVersion:      os.Getenv("GIT_COMMIT"),
+			ProviderBranch:       os.Getenv("GIT_BRANCH"),
 			BrokerURL:            os.Getenv("PACT_URL"),
 			EnablePending:        true,
 			IncludeWIPPactsSince: &includeWIPPactsSince,
