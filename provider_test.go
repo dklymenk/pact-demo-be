@@ -66,7 +66,7 @@ func TestV3HTTPProvider(t *testing.T) {
 					DeployedOrReleased: true,
 				},
 				&provider.ConsumerVersionSelector{
-					Branch: os.Getenv("APP_BRANCH"),
+					Branch: os.Getenv("GIT_BRANCH"),
 				},
 				&provider.ConsumerVersionSelector{
 					MatchingBranch: true,
