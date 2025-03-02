@@ -163,7 +163,7 @@ func startServer() {
 				"nationality": "US",
 				"id": 12,
 				"lastName": "Sampson",
-				"name": "Billy",
+				"name": "Billy"
 			}`,
 		)
 	})
