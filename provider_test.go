@@ -152,7 +152,21 @@ func TestV3HTTPProvider(t *testing.T) {
 
 func startServer() {
 	mux := http.NewServeMux()
-
+	mux.HandleFunc("/users", func(w http.ResponseWriter, req *http.Request) {
+		fmt.Println(req)
+		w.Header().Add("Content-Type", "application/json")
+		if req.Method == "POST" {
+			w.WriteHeader(201)
+		}
+		fmt.Fprintf(w, `
+			{
+				"nationality": "US",
+				"id": 12,
+				"lastName": "Sampson",
+				"name": "Billy",
+			}`,
+		)
+	})
 	mux.HandleFunc("/users/", func(w http.ResponseWriter, req *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
 		fmt.Fprintf(w, `
