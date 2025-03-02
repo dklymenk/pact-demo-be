@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/pact-foundation/pact-go/v2/log"
@@ -48,12 +49,15 @@ func TestV3HTTPProvider(t *testing.T) {
 	// Verify the Provider with local Pact Files
 
 	if os.Getenv("CI") == "true" {
+		includeWIPPactsSince := time.Date(2025, time.January, 25, 12, 30, 0, 0, time.UTC)
 		err := verifier.VerifyProvider(t, provider.VerifyRequest{
-			ProviderBaseURL: "http://127.0.0.1:8111",
-			Provider:        "pact-demo-be",
-			ProviderVersion: os.Getenv("APP_SHA"),
-			ProviderBranch:  os.Getenv("APP_BRANCH"),
-			BrokerURL:       os.Getenv("PACT_URL"),
+			ProviderBaseURL:      "http://127.0.0.1:8111",
+			Provider:             "pact-demo-be",
+			ProviderVersion:      os.Getenv("APP_SHA"),
+			ProviderBranch:       os.Getenv("APP_BRANCH"),
+			BrokerURL:            os.Getenv("PACT_URL"),
+			EnablePending:        true,
+			IncludeWIPPactsSince: &includeWIPPactsSince,
 			ConsumerVersionSelectors: []provider.Selector{
 				&provider.ConsumerVersionSelector{
 					MainBranch: true,
