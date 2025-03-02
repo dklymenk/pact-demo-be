@@ -104,7 +104,7 @@ test_contract_requiring_verification_published_webhook:
 
 install:
 	go install github.com/pact-foundation/pact-go/v2
-	pact-go -l DEBUG install
+	sudo pact-go -l DEBUG install
 
 .env:
 	touch .env
