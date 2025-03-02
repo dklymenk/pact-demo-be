@@ -3,7 +3,7 @@ GITHUB_REPO := "dklymenk/pact-demo-be"
 # PACT_CHANGED_WEBHOOK_UUID := "c76b601e-d66a-4eb1-88a4-6ebc50c0df8b"
 # CONTRACT_REQUIRING_VERIFICATION_PUBLISHED_WEBHOOK_UUID := "8ce63439-6b70-4e9b-8891-703d5ea2953c"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_USERNAME -e PACT_BROKER_PASSWORD pactfoundation/pact-cli"
-PACT_DOWNLOAD_DIR=/tmp
+PACT_GO_LIB_DOWNLOAD_PATH=/tmp
 
 .EXPORT_ALL_VARIABLES:
 GIT_COMMIT?=$(shell git rev-parse HEAD)
@@ -105,7 +105,7 @@ test_contract_requiring_verification_published_webhook:
 
 install:
 	go install github.com/pact-foundation/pact-go/v2
-	pact-go -l DEBUG install --libDir $(PACT_DOWNLOAD_DIR);
+	pact-go -l DEBUG install --libDir $(PACT_GO_LIB_DOWNLOAD_PATH);
 
 .env:
 	touch .env
