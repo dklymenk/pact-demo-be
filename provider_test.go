@@ -160,7 +160,6 @@ func startServer() {
 		}
 		fmt.Fprintf(w, `
 			{
-				"nationality": "US",
 				"id": 12,
 				"lastName": "Sampson",
 				"name": "Billy"
